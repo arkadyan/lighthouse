@@ -1,9 +1,16 @@
+import processing.video.*;
+import toxi.processing.*;
+
+
+ToxiclibsSupport gfx;
 
 
 void setup() {
-	size(680, 480);
-	/*  size(1920, 1355);*/
+	size(68, 50);
+  smooth();
+  noCursor();
 	
+	gfx = new ToxiclibsSupport(this);
 }
 
 void draw() {
