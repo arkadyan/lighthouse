@@ -17,9 +17,9 @@ class Flock {
     }
   }
   
-  public void draw(ToxiclibsSupport gfx, boolean debug) {
+  public void draw(ToxiclibsSupport gfx) {
     for (Diamond d : diamonds) {
-      d.draw(gfx, debug);
+      d.draw(gfx);
     }
   }
   

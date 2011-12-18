@@ -47,9 +47,8 @@ class Diamond extends Mover {
    * Draw our diamond at its current position.
    *
    * @param gfx  A ToxiclibsSupport object to use for drawing.
-   * @param debug  Whether on not to draw debugging visuals.
    */
-  public void draw(ToxiclibsSupport gfx, boolean debug) {
+  public void draw(ToxiclibsSupport gfx) {
     // Draw a diamond rotated in the direction of velocity.
     float theta = velocity.heading() + PI*0.5;
     
@@ -69,8 +68,6 @@ class Diamond extends Mover {
     
     gfx.polygon2D(shape);
     popMatrix();
-    
-    if (debug) drawDebugVisuals(gfx);
   }
   
   /**
@@ -239,31 +236,4 @@ class Diamond extends Mover {
     if (position.x > (worldWidth+LENGTH)) position.x = -LENGTH;
     if (position.y > (worldHeight+LENGTH)) position.y = -LENGTH;
   }
-  
-  /**
-   * Draw extra visuals useful for debugging purposes.
-   */
-  private void drawDebugVisuals(ToxiclibsSupport gfx) {
-    // Draw the diamond's velocity
-    stroke(#ff00ff);
-    strokeWeight(1);
-    fill(#ff00ff);
-    Arrow.draw(gfx, position, position.add(velocity.scale(10)), 4);
-    
-    // Draw the separation force in green
-    stroke(#97FF14);
-    noFill();
-    Arrow.draw(gfx, position, position.add(separationForce.scale(500)), 4);
-    
-    // Draw the aligning force in blue
-    stroke(#52C7FF);
-    noFill();
-    Arrow.draw(gfx, position, position.add(aligningForce.scale(1000)), 4);
-    
-    // Draw the cohesion force in pink
-    stroke(#FF5EDE);
-    noFill();
-    Arrow.draw(gfx, position, position.add(cohesionForce.scale(1000)), 4);
-  }
-  
 }
