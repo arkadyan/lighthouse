@@ -3,15 +3,15 @@ import toxi.processing.*;
 
 class Diamond extends Mover {
   
-  private static final int LENGTH = 50;
-  private static final int WIDTH = 30;
+  private static final int LENGTH = 5;
+  private static final int WIDTH = 3;
   
   private static final float SEPARATION_FORCE_WEIGHT = 1.5;
   private static final float ALIGNING_FORCE_WEIGHT = 1.0;
   private static final float COHESION_FORCE_WEIGHT = 1.0;
   
-  private static final float DESIRED_SEPARATION = 30.0;
-  private static final float NEIGHBOR_DISTANCE = 50;
+  private static final float DESIRED_SEPARATION = 3.0;
+  private static final float NEIGHBOR_DISTANCE = 5.0;
   
   private Polygon2D shape;
   private color fillColor;
