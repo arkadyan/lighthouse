@@ -83,10 +83,10 @@ public class PathOverhead implements SubSketch {
 	private void addPerson() {
 	  if (random(1) < 0.5) {
 	    // Start the person at the left end of the path.
-	    people.add(new Person(new Vec2D(0, 380), random(2), +1));
+	    people.add(new Person(new Vec2D(0, 38), random(0.2), +1));
 	  } else {
 	    // Start the person at the right end of the path.
-	    people.add(new Person(new Vec2D(width, 90), random(2), -1));
+	    people.add(new Person(new Vec2D(width, 9), random(0.2), -1));
 	  }
 	  timeOfLastPerson = millis();
 	}

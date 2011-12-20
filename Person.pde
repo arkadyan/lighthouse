@@ -9,13 +9,13 @@ class Person extends Mover {
   
   
   static private final color PERSON_COLOR = #000000;
-  static private final int BODY_LENGTH = 8;
-  static private final int BODY_WIDTH = 15;
-  static private final int HEAD_LENGTH = 8;
-  static private final int HEAD_WIDTH = 6;
+  static private final float BODY_LENGTH = 0.8;
+  static private final float BODY_WIDTH = 1.5;
+  static private final float HEAD_LENGTH = 0.8;
+  static private final float HEAD_WIDTH = 0.6;
   
   // How far to keep away from other people.
-  static private final int DESIRED_SEPARATION = 100;
+  static private final int DESIRED_SEPARATION = 10;
   static private final float FOLLOW_WEIGHT = 1.0;
   static private final float AVOID_WEIGHT = 0.75;
   
@@ -44,7 +44,7 @@ class Person extends Mover {
     velocity = new Vec2D(maxSpeed * dir, 0);
     
     acceleration = new Vec2D(0, 0);
-    maxForce = 0.1;
+    maxForce = 0.01;
   }
   
   
@@ -190,12 +190,12 @@ class Person extends Mover {
         pathDirection.normalize();
         // This is an oversimplification.
         // It should be based on distance to the path and velocity.
-        pathDirection.scaleSelf(10);
+        pathDirection.scaleSelf(1.0);
         target = normal.copy();
         target.addSelf(pathDirection);
         
         // Target out to the right of the path center a bit.
-        target.addSelf( pathDirection.perpendicular().normalizeTo(10) );
+        target.addSelf( pathDirection.perpendicular().normalizeTo(1.0) );
       }
     }
     
@@ -238,9 +238,9 @@ class Person extends Mover {
     
     desired.normalize();
     // If we are closer than 100 pixels (arbitrary distance)…
-    if (distance < 100) {
+    if (distance < 10) {
       // …set the magnitude according to how close.
-      float m = map(distance, 0, 100, 0, maxSpeed);
+      float m = map(distance, 0, 10, 0, maxSpeed);
       desired.scaleSelf(m);
     } else {
       // Otherwise, proceed at maximum speed.
