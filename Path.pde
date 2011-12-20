@@ -5,7 +5,7 @@ public class Path {
   
   
   static private final color PATH_COLOR = #dc982c;
-  static private final int PATH_WIDTH = 100;
+  static private final int PATH_WIDTH = 10;
 
   Spline2D path;
   
@@ -15,10 +15,10 @@ public class Path {
    */
   Path() {
     path = new Spline2D();
-    path.add(new Vec2D(0, 400));
-    path.add(new Vec2D(150, 350));
-    path.add(new Vec2D(500, 150));
-    path.add(new Vec2D(720, 80));
+    path.add(new Vec2D(0, 40));
+    path.add(new Vec2D(15, 35));
+    path.add(new Vec2D(50, 15));
+    path.add(new Vec2D(72, 8));
   }
   
   /**

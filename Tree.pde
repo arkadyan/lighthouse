@@ -4,7 +4,7 @@ public class Tree {
 
   
   static private final color TREE_COLOR = #084813;
-  static private final int TREE_DIAMETER = 50;
+  static private final int TREE_DIAMETER = 5;
   
   private Vec2D position;
   
