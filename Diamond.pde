@@ -32,7 +32,7 @@ class Diamond extends Mover {
     fillColor = color(random(256), random(256), random(256), random(150, 256));
     velocity = new Vec2D(random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed));
     acceleration = new Vec2D(0, 0);
-    maxSpeed = 3;
+    maxSpeed = 0.3;
     maxForce = 0.05;
   }
   
