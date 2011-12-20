@@ -1,3 +1,6 @@
+import toxi.processing.*;
+
+
 public class FlockingDiamonds implements SubSketch {
 	
 	private static final int FLOCK_SIZE = 200;
