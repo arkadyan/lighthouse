@@ -37,6 +37,7 @@ private void initializeSubSketches() {
 	subSketches = new ArrayList<SubSketch>();
 	subSketches.add(new FlockingDiamonds());
 	subSketches.add(new PathOverhead());
+	// subSketches.add(new FerryMoviePlayer(this));
 	
 	activeSketch = 0;
 	timeOfLastSketchSwitch = millis();
