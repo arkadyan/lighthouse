@@ -6,11 +6,13 @@ ToxiclibsSupport gfx;
 
 ArrayList<SubSketch> subSketches;
 
+private int timeOfLastSketchSwitch;
+
 
 void setup() {
 	size(68, 50);
-  smooth();
-  noCursor();
+	smooth();
+	noCursor();
 	
 	gfx = new ToxiclibsSupport(this);
 	
@@ -29,5 +31,6 @@ void draw() {
 
 private void initializeSubSketches() {
 	subSketches = new ArrayList<SubSketch>();
-	subSketches.add(new FlockingDiamonds());
+	// subSketches.add(new FlockingDiamonds());
+	subSketches.add(new PathOverhead());
 }
