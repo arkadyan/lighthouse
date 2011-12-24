@@ -30,6 +30,9 @@ void setup() {
 void draw() {
 	background(0);
 	
+	// Apply the offsets to position the drawing.
+	gfx.translate(new Vec2D(X_OFFSET, Y_OFFSET));
+	
 	// Potentially switch active sketches
 	if (random(millis()-timeOfLastSketchSwitch) > 10000) {
 		switchActiveSketch();
@@ -42,8 +45,8 @@ void draw() {
 
 private void initializeSubSketches() {
 	subSketches = new ArrayList<SubSketch>();
-	subSketches.add(new FlockingDiamonds(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
-	// subSketches.add(new PathOverhead(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	// subSketches.add(new FlockingDiamonds(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	subSketches.add(new PathOverhead(WORLD_WIDTH, WORLD_HEIGHT));
 	// subSketches.add(new FerryMoviePlayer(this, WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
 	
 	activeSketch = 0;

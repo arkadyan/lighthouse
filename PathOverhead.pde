@@ -9,22 +9,27 @@ public class PathOverhead implements SubSketch {
 	private static final color GRASS_COLOR = #017f16;
 	private static final int NUM_TREES = 12;
 	
-	private int timeOfLastPerson;
+	// Size of the world.
+	private int worldWidth;
+	private int worldHeight;
 	
+	private int timeOfLastPerson;
 	
 	private Path path;
 	private Tree[] trees = new Tree[NUM_TREES];
 	private ArrayList<Person> people;
 	
 	
-	public PathOverhead() {
+	public PathOverhead(int ww, int wh) {
+		worldWidth = ww;
+		worldHeight = wh;
+		
 	  path = new Path();
   
 	  placeTrees();
 		
 	  people = new ArrayList();
 	  addPerson();
-		
 	}
 	
 	public void draw(ToxiclibsSupport gfx) {
@@ -44,7 +49,7 @@ public class PathOverhead implements SubSketch {
 	    person.follow(path);
 	    person.avoid(people);
 	    person.update();
-	    if (person.getPosition().x+15 < 0 || person.getPosition().x-15 > width) {
+	    if (person.getPosition().x+15 < 0 || person.getPosition().x-15 > worldWidth) {
 	      // Mark for removal if off the canvas.
 	      personReapList.add(person);
 	    } else {
@@ -76,7 +81,7 @@ public class PathOverhead implements SubSketch {
 	 */
 	private void placeTrees() {
 	  for (int i=0; i<trees.length; i++) {
-	    trees[i] = new Tree(width, height, path);
+	    trees[i] = new Tree(worldWidth, worldHeight, path);
 	  }
 	}
 
@@ -89,7 +94,7 @@ public class PathOverhead implements SubSketch {
 	    people.add(new Person(new Vec2D(0, 38), random(0.2), +1));
 	  } else {
 	    // Start the person at the right end of the path.
-	    people.add(new Person(new Vec2D(width, 9), random(0.2), -1));
+	    people.add(new Person(new Vec2D(worldWidth, 9), random(0.2), -1));
 	  }
 	  timeOfLastPerson = millis();
 	}
