@@ -4,6 +4,12 @@ import toxi.processing.*;
 
 ToxiclibsSupport gfx;
 
+private static final int WORLD_WIDTH = 68;
+private static final int WORLD_HEIGHT = 50;
+
+private static final int X_OFFSET = 1100;
+private static final int Y_OFFSET = 685;
+
 private ArrayList<SubSketch> subSketches;
 private int activeSketch;
 
@@ -11,7 +17,8 @@ private int timeOfLastSketchSwitch;
 
 
 void setup() {
-	size(68, 50);
+	// size(68, 50);
+	size(screen.width, screen.height);
 	smooth();
 	noCursor();
 	
@@ -35,9 +42,9 @@ void draw() {
 
 private void initializeSubSketches() {
 	subSketches = new ArrayList<SubSketch>();
-	subSketches.add(new FlockingDiamonds());
-	subSketches.add(new PathOverhead());
-	// subSketches.add(new FerryMoviePlayer(this));
+	subSketches.add(new FlockingDiamonds(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	// subSketches.add(new PathOverhead(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	// subSketches.add(new FerryMoviePlayer(this, WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
 	
 	activeSketch = 0;
 	timeOfLastSketchSwitch = millis();
