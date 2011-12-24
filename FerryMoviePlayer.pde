@@ -11,7 +11,7 @@ public class FerryMoviePlayer implements SubSketch {
 	
 	public FerryMoviePlayer(PApplet parent) {
 		// Load and play the video in a loop
-		movie = new GSMovie(parent, "ferry_ride_excerpt.mov");
+		movie = new GSMovie(parent, "ferry_ride_tiny_sna.mov");
 		movie.loop();
 	}
 	
