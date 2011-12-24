@@ -45,9 +45,9 @@ void draw() {
 
 private void initializeSubSketches() {
 	subSketches = new ArrayList<SubSketch>();
-	// subSketches.add(new FlockingDiamonds(WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	subSketches.add(new FlockingDiamonds(WORLD_WIDTH, WORLD_HEIGHT));
 	subSketches.add(new PathOverhead(WORLD_WIDTH, WORLD_HEIGHT));
-	// subSketches.add(new FerryMoviePlayer(this, WORLD_WIDTH, WORLD_HEIGHT, X_OFFSET, Y_OFFSET));
+	// subSketches.add(new FerryMoviePlayer(this, WORLD_WIDTH, WORLD_HEIGHT));
 	
 	activeSketch = 0;
 	timeOfLastSketchSwitch = millis();

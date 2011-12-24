@@ -12,25 +12,20 @@ public class FlockingDiamonds implements SubSketch {
 	// Size of the world.
 	private int worldWidth;
 	private int worldHeight;
-	// Screen offset
-	private int xOffset;
-	private int yOffset;
 
 	// A flock of Diamonds.
 	Flock flock;
 	
 	
-	public FlockingDiamonds(int ww, int wh, int xo, int yo) {
+	public FlockingDiamonds(int ww, int wh) {
 		worldWidth = ww;
 		worldHeight = wh;
-		xOffset = xo;
-		yOffset = yo;
 		
 		flock = new Flock();
 		
 	  // Add an initial set of diamonds into the flock.
 	  for (int i=0; i < FLOCK_SIZE; i++) {
-	    flock.addDiamond( new Diamond(new Vec2D(random(0, worldWidth), random(0, worldHeight)), worldWidth, worldHeight, xOffset, yOffset) );
+	    flock.addDiamond( new Diamond(new Vec2D(random(0, worldWidth), random(0, worldHeight)), worldWidth, worldHeight) );
 	  }
 	}
 	

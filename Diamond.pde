@@ -19,9 +19,6 @@ class Diamond extends Mover {
 	// Size of the world.
   private int worldWidth;
   private int worldHeight;
-	// Screen offset
-	private int xOffset;
-	private int yOffset;
   
   // Properties shown while debugging
   private Vec2D separationForce;   // Force wanting to separate from all other diamonds
@@ -29,12 +26,10 @@ class Diamond extends Mover {
   private Vec2D cohesionForce;   // Force wanting to stay between all nearby diamonds
   
   
-  Diamond(Vec2D pos, int ww, int wh, int xo, int yo) {
+  Diamond(Vec2D pos, int ww, int wh) {
     position = pos;
     worldWidth = ww;
     worldHeight = wh;
-		xOffset = xo;
-		yOffset = yo;
     fillColor = color(random(256), random(256), random(256), random(150, 256));
     velocity = new Vec2D(random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed));
     acceleration = new Vec2D(0, 0);
@@ -62,7 +57,7 @@ class Diamond extends Mover {
     fill(fillColor);
     
     pushMatrix();
-    translate(position.x+xOffset, position.y+yOffset);
+    translate(position.x, position.y);
     rotate(theta);
     
     // Define the shape.
