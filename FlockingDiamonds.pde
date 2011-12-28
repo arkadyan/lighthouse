@@ -81,7 +81,7 @@ public class FlockingDiamonds implements SubSketch {
 			Flock3D f = new Flock3D();
 			// Add an initial set of diamonds into the flock.
 			for (int j=0; j < FLOCK_SIZE; j++) {
-		    f.addDiamond( new Diamond3D(new Vec3D(random(0, WORLD_WIDTH), random(0, WORLD_HEIGHT), random(-1, 1)), WORLD_WIDTH, WORLD_HEIGHT, COLORS[i][floor(random(COLORS[i].length))]) );
+		    f.addDiamond( new Diamond3D(new Vec3D(random(0, worldWidth), random(0, worldHeight), random(-1, 1)), worldWidth, worldHeight, COLORS[i][floor(random(COLORS[i].length))]) );
 		  }
 			flocks.add(f);
 		}
