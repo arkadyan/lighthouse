@@ -18,7 +18,7 @@ private int timeOfLastSketchSwitch;
 void setup() {
 	// size(WORLD_WIDTH, WORLD_HEIGHT);
 	size(screen.width, screen.height);
-	frameRate(30);
+	frameRate(60);
 	smooth();
 	noCursor();
 	
