@@ -11,12 +11,12 @@ class Diamond3D extends Mover3D {
 	private static final float COHESION_FORCE_WEIGHT = 1.0;
 	private static final float Z_BOUNDARY_REPULSION_WEIGHT = 0.002;
 	
-	private static final float DESIRED_SEPARATION = 30.0;
-	private static final float NEIGHBOR_DISTANCE = 50;
+	private static final float DESIRED_SEPARATION = 3.0;
+	private static final float NEIGHBOR_DISTANCE = 5.0;
 	
-	private static final float Z_SCALE_WEIGHT = 0.3;
-	private static final float Z_SCALE_OFFSET = 4.0;
-	private static final float MAX_Z = 1;
+	private static final float Z_SCALE_WEIGHT = 0.03;
+	private static final float Z_SCALE_OFFSET = 0.4;
+	private static final float MAX_Z = 0.1;
 	
 	private Polygon2D shape;
 	private color fillColor;
