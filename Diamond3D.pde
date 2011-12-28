@@ -32,11 +32,11 @@ class Diamond3D extends Mover3D {
 	private Vec3D zRepulsionForce;   // Force pushing away from Z boundaries
 	
 	
-	Diamond3D(Vec3D pos, int ww, int wh) {
+	Diamond3D(Vec3D pos, int ww, int wh, color c) {
 		position = pos;
 		worldWidth = ww;
 		worldHeight = wh;
-		fillColor = color(random(256), random(256), random(256), random(150, 256));
+		fillColor = c;
 		velocity = new Vec3D(random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed));
 		acceleration = new Vec3D(0, 0, 0);
 		maxSpeed = 3;
