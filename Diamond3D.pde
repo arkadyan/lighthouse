@@ -9,14 +9,14 @@ class Diamond3D extends Mover3D {
 	private static final float SEPARATION_FORCE_WEIGHT = 1.5;
 	private static final float ALIGNING_FORCE_WEIGHT = 1.0;
 	private static final float COHESION_FORCE_WEIGHT = 1.0;
-	private static final float Z_BOUNDARY_REPULSION_WEIGHT = 0.002;
+	private static final float Z_BOUNDARY_REPULSION_WEIGHT = 0.008;
 	
 	private static final float DESIRED_SEPARATION = 3.0;
 	private static final float NEIGHBOR_DISTANCE = 5.0;
 	
-	private static final float Z_SCALE_WEIGHT = 0.03;
-	private static final float Z_SCALE_OFFSET = 0.4;
-	private static final float MAX_Z = 0.1;
+	private static final float Z_SCALE_WEIGHT = 0.3;
+	private static final float Z_SCALE_OFFSET = 4.0;
+	private static final float MAX_Z = 1;
 	
 	private Polygon2D shape;
 	private color fillColor;
@@ -37,9 +37,9 @@ class Diamond3D extends Mover3D {
 		worldWidth = ww;
 		worldHeight = wh;
 		fillColor = c;
-		velocity = new Vec3D(random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed));
-		acceleration = new Vec3D(0, 0, 0);
-		maxSpeed = 3;
+		maxSpeed = 0.5;
+		velocity = new Vec3D(random(-maxSpeed, maxSpeed), random(-maxSpeed, maxSpeed), random(-0.2*maxSpeed, 0.2*maxSpeed));
+		acceleration = new Vec3D();
 		maxForce = 0.05;
 	}
 	
@@ -196,7 +196,7 @@ class Diamond3D extends Mover3D {
 	 * Be repulsed from the Z boundaries
 	 */
   private Vec3D determineZRepulsionForce() {
-		return new Vec3D(0, 0, -(position.z/MAX_Z));
+		return new Vec3D(0, 0, -(position.z()/MAX_Z));
 	}
 	
   /**
