@@ -17,7 +17,7 @@ private int timeOfLastSketchSwitch;
 
 
 void setup() {
-	// size(68, 50);
+	// size(WORLD_WIDTH, WORLD_HEIGHT);
 	size(screen.width, screen.height);
 	smooth();
 	noCursor();
@@ -34,9 +34,9 @@ void draw() {
 	gfx.translate(new Vec2D(X_OFFSET, Y_OFFSET));
 	
 	// Potentially switch active sketches
-	if (random(millis()-timeOfLastSketchSwitch) > 10000) {
-		switchActiveSketch();
-	}
+	// if (random(millis()-timeOfLastSketchSwitch) > 10000) {
+		// switchActiveSketch();
+	// }
 
 	// Draw the active sketch
 	subSketches.get(activeSketch).draw(gfx);
