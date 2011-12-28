@@ -123,7 +123,7 @@ class Diamond3D extends Mover3D {
 	 * Check for nearby diamonds and separate from them.
 	 */
 	private Vec3D determineSeparationForce(ArrayList<Diamond3D> diamonds) {
-		Vec3D sepForce = new Vec3D(0, 0, 0);
+		Vec3D sepForce = new Vec3D();
 		
 		// For every diamond in the flock, check if it's too close.
 		for (Diamond3D other : diamonds) {
@@ -152,7 +152,7 @@ class Diamond3D extends Mover3D {
 	 * Align velocity with the average of the nearby diamonds.
 	 */
 	private Vec3D determineAligningForce(ArrayList<Diamond3D> diamonds) {
-		Vec3D algnForce = new Vec3D(0, 0, 0);
+		Vec3D algnForce = new Vec3D();
 		
 		for (Diamond3D other : diamonds) {
 			if (isCloseTo(other)) {
@@ -174,7 +174,7 @@ class Diamond3D extends Mover3D {
    * Steer towards the average position of all nearby diamonds.
    */
   private Vec3D determineCohesionForce(ArrayList<Diamond3D> diamonds) {
-    Vec3D cohForce = new Vec3D(0, 0, 0);
+    Vec3D cohForce = new Vec3D();
     
     for (Diamond3D other : diamonds) {
       if (isCloseTo(other)) {
