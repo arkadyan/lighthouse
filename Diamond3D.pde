@@ -54,9 +54,8 @@ class Diamond3D extends Mover3D {
 	 * Draw our diamond at its current position.
 	 *
 	 * @param gfx  A ToxiclibsSupport object to use for drawing.
-	 * @param debug  Whether on not to draw debugging visuals.
 	 */
-	public void draw(ToxiclibsSupport gfx, boolean debug) {
+	public void draw(ToxiclibsSupport gfx) {
 		// Draw a diamond rotated in the direction of velocity.
 		float theta = velocity.headingXY() + PI*0.5;
 		float zScale;
@@ -81,8 +80,6 @@ class Diamond3D extends Mover3D {
 		
 		gfx.polygon2D(shape);
 		popMatrix();
-		
-		if (debug) drawDebugVisuals(gfx);
 	}
 	
 	/**
@@ -260,32 +257,6 @@ class Diamond3D extends Mover3D {
     if (position.y < -LENGTH) position.y = worldHeight + LENGTH;
     if (position.x > (worldWidth+LENGTH)) position.x = -LENGTH;
     if (position.y > (worldHeight+LENGTH)) position.y = -LENGTH;
-  }
-  
-  /**
-   * Draw extra visuals useful for debugging purposes.
-   */
-  private void drawDebugVisuals(ToxiclibsSupport gfx) {
-    // Draw the diamond's velocity
-    stroke(#ff00ff);
-    strokeWeight(1);
-    fill(#ff00ff);
-    Arrow.draw(gfx, position.to2DXY(), position.to2DXY().add(velocity.to2DXY().scale(10)), 4);
-    
-    // Draw the separation force in green
-    stroke(#97FF14);
-    noFill();
-    Arrow.draw(gfx, position.to2DXY(), position.to2DXY().add(separationForce.to2DXY().scale(500)), 4);
-    
-    // Draw the aligning force in blue
-    stroke(#52C7FF);
-    noFill();
-    Arrow.draw(gfx, position.to2DXY(), position.to2DXY().add(aligningForce.to2DXY().scale(1000)), 4);
-    
-    // Draw the cohesion force in pink
-    stroke(#FF5EDE);
-    noFill();
-    Arrow.draw(gfx, position.to2DXY(), position.to2DXY().add(cohesionForce.to2DXY().scale(1000)), 4);
   }
   
 }
