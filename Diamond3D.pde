@@ -3,8 +3,8 @@ import toxi.processing.*;
 
 class Diamond3D extends Mover3D {
 	
-	private static final int LENGTH = 50;
-	private static final int WIDTH = 30;
+	private static final int LENGTH = 5;
+	private static final int WIDTH = 3;
 	
 	private static final float SEPARATION_FORCE_WEIGHT = 1.5;
 	private static final float ALIGNING_FORCE_WEIGHT = 1.0;
