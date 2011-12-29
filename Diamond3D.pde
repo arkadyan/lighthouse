@@ -255,7 +255,6 @@ class Diamond3D extends Mover3D {
 		return otherPosition;
 	}
 	
-  
   /**
    * Make all borders wrap-around so we return to the other side of the canvas.
    */
