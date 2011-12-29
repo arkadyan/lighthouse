@@ -231,27 +231,27 @@ class Diamond3D extends Mover3D {
 	
 	private Vec3D closestWrappedOtherPosition(Diamond3D other) {
 		Vec3D otherPosition = other.getPosition().copy();
+		float distance = position.distanceTo(otherPosition);
 		
-    // Get a revised distance taking into account border wrapping.
-    if (position.x > worldWidth-NEIGHBOR_DISTANCE && otherPosition.x < NEIGHBOR_DISTANCE) {
-      // If we are close to the right edge and the other is close to the left,
-      // move them as if they are over to the right.
-      otherPosition.addSelf(new Vec3D(worldWidth, 0, 0));
-    } else if (position.x < NEIGHBOR_DISTANCE && otherPosition.x > worldWidth-NEIGHBOR_DISTANCE) {
-      // If we are close to the left edge and the other is close to the right,
-      // move them as if they are over to the left.
-      otherPosition.subSelf(new Vec3D(worldWidth, 0, 0));
-    }
-    if (position.y > worldHeight-NEIGHBOR_DISTANCE && otherPosition.y < NEIGHBOR_DISTANCE) {
-      // If we are close to the bottom edge and the other is close to the top,
-      // move them as if they are below us.
-      otherPosition.addSelf(new Vec3D(0, worldHeight, 0));
-    } else if (position.y < NEIGHBOR_DISTANCE && otherPosition.y > worldHeight-NEIGHBOR_DISTANCE) {
-      // If we are close to the top edge and the other is close to the bottom,
-      // move them as if they are above us.
-      otherPosition.subSelf(new Vec3D(0, worldHeight, 0));
-    }
-		
+		if (position.distanceTo(otherPosition.add(new Vec3D(worldWidth, 0, 0))) < distance) {
+			// Move the other over to the right
+			otherPosition.addSelf(new Vec3D(worldWidth, 0, 0));
+			distance = position.distanceTo(otherPosition);
+		} else if (position.distanceTo(otherPosition.sub(new Vec3D(worldWidth, 0, 0))) < distance) {
+			// Move the other over to the left
+			otherPosition.subSelf(new Vec3D(worldWidth, 0, 0));
+			distance = position.distanceTo(otherPosition);
+		}
+		if (position.distanceTo(otherPosition.add(new Vec3D(0, worldHeight, 0))) < distance) {
+			// Move the other down
+			otherPosition.addSelf(new Vec3D(0, worldHeight, 0));
+			distance = position.distanceTo(otherPosition);
+		} else if (position.distanceTo(otherPosition.sub(new Vec3D(0, worldHeight, 0))) < distance) {
+			// Move the other up
+			otherPosition.subSelf(new Vec3D(0, worldHeight, 0));
+			distance = position.distanceTo(otherPosition);
+		}
+				
 		return otherPosition;
 	}
 	
