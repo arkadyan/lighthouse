@@ -127,7 +127,7 @@ class Diamond3D extends Mover3D {
 		
 		// For every diamond in the flock, check if it's too close.
 		for (Diamond3D other : diamonds) {
-			Vec3D otherPosition = other.getPosition();
+			Vec3D otherPosition = closestWrappedOtherPosition(other);
 			float distance = position.distanceTo(otherPosition);
 			if (distance > 0 && distance < DESIRED_SEPARATION) {
 				// Calculate vector pointing away from the other.
@@ -178,7 +178,7 @@ class Diamond3D extends Mover3D {
     
     for (Diamond3D other : diamonds) {
       if (isCloseTo(other)) {
-        cohForce.addSelf(other.getPosition());
+        cohForce.addSelf(closestWrappedOtherPosition(other));
       }
     }
     
@@ -219,6 +219,19 @@ class Diamond3D extends Mover3D {
       return true;
     }
     
+    // Compare the distance again.
+    distance = position.distanceTo(closestWrappedOtherPosition(other));
+    
+    if (distance < NEIGHBOR_DISTANCE) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+	
+	private Vec3D closestWrappedOtherPosition(Diamond3D other) {
+		Vec3D otherPosition = other.getPosition().copy();
+		
     // Get a revised distance taking into account border wrapping.
     if (position.x > worldWidth-NEIGHBOR_DISTANCE && otherPosition.x < NEIGHBOR_DISTANCE) {
       // If we are close to the right edge and the other is close to the left,
@@ -238,16 +251,10 @@ class Diamond3D extends Mover3D {
       // move them as if they are above us.
       otherPosition.subSelf(new Vec3D(0, worldHeight, 0));
     }
-    
-    // Compare the distance again.
-    distance = position.distanceTo(otherPosition);
-    
-    if (distance < NEIGHBOR_DISTANCE) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+		
+		return otherPosition;
+	}
+	
   
   /**
    * Make all borders wrap-around so we return to the other side of the canvas.
